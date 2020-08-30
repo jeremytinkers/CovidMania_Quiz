@@ -1,0 +1,44 @@
+.option{
+
+padding: 20px;
+background-color: powderblue;
+border-radius: 10px;
+margin:20px;
+
+}
+
+.option:hover{
+  padding: 25px;
+  
+}
+
+.navigate{
+
+text-align:center;
+padding: 10px;
+font-size: 1.5rem;
+border-radius: 10px;
+font-weight: bold;
+margin: auto;
+
+}
+
+
+h1{
+  text-align: center;
+  color: rgb(0,0,0);
+  text-decoration: underline;
+  font-weight: bold;
+  font-family: fantasy;
+}
+
+.question{
+
+width:auto;
+background-color: orange;
+padding: 50px;
+border-radius: 10px;
+font-size: 3rem;
+margin-left: 10%;
+margin-right:10%;
+}
