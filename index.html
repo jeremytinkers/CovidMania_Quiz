@@ -2,43 +2,49 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta charset="utf-8">
-  <title>COVID MANIA</title>
-  <!--Google Font-->
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2&family=Bebas+Neue&family=Gloria+Hallelujah&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <!-- Font Awesome -->
-  <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+    <meta charset="utf-8">
+    <title>COVID MANIA</title>
+    <!--Google Font-->
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2&family=Bebas+Neue&family=Gloria+Hallelujah&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Font Awesome -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
 
 </head>
 
 <body>
 
 
-  <h1>  <img src="virus.png" alt="Virus Image not Loading" >COVID MANIA</h1>
+    <h1> <img src="virus.png" alt="Virus Image not Loading">COVID MANIA</h1>
 
 
-  <div class="question">Nothing</div>
-  <hr>
+    <div class="question">Nothing</div>
+    <hr>
 
-<div class="row">
-  <button type="button" name="button" class="option" id="#o1">1</button>
-  <button type="button" name="button" class="option" id="#o2">2</button>
-  <button type="button" name="button" class="option" id="#o3">3</button>
-  <button type="button" name="button" class="option" id="#o4">4</button>
-</div>
+    <div class="row">
+        <button type="button" onclick="check(this)" name="button" class="option" id="#o1">1</button>
+        <button type="button" onclick="check(this)" name="button" class="option" id="#o2">2</button>
+        <button type="button" onclick="check(this)" name="button" class="option" id="#o3">3</button>
+        <button type="button" onclick="check(this)" name="button" class="option" id="#o4">4</button>
+    </div>
 
 
 
-<hr style="clear:both;">
+    <hr>
 
-<div class="navigatediv">
-  <button type="button" onclick="assignPrev()"class="navigate" name="button"><i class="fas fa-arrow-left"></i>  PREVIOUS</button>
-  <button type="button" onclick="assignNext()"class="navigate" name="button">NEXT   <i class="fas fa-arrow-right"></i></button>
+    <div class="navigatediv">
+        <button type="button" onclick="assignPrev()" class="navigate" name="button"><i class="fas fa-arrow-left"></i> PREVIOUS</button>
+        <button type="button" id="#next" onclick="assignNext()" class="navigate" name="button">NEXT <i class="fas fa-arrow-right"></i></button>
 
-</div>
+    </div>
 
-<script src="app.js" charset="utf-8"></script>
+    <div class="score row disabled" onclick="score1()">
+        SCORE CURIOUS?
+    </div>
+
+    </div>
+
+    <script src="app.js" charset="utf-8"></script>
 
 </body>
 
