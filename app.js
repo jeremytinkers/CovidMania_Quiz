@@ -11,28 +11,56 @@ var q9 = ["Where did the first case of COVID appear?", "Mexico", "Hogwarts", "Wu
 var q10 = ["Which age group has been dealt with the worst blow by covid?", "Under 10 years", "50-65 years", "Over 65 years", "Age is no barrier!", 1];
 
 var quiz = [q1, q2, q3, q4, q5, q6, q7, q8, q9, q10];
+var randomtracker =[0,1,2,3,4,5,6,7,8,9];
+
+
+//function to randomly shuffle randomtracker array
+function shuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex;
+
+
+  while (0 !== currentIndex) {
+
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+}
+
+shuffle(randomtracker);
 
 var tracker = 0;
 var score = 0;
 
 var x = document.getElementsByClassName("question");
-x[0].innerHTML = quiz[0][0];
+x[0].innerHTML = quiz[randomtracker[tracker]][0];
 var y = document.getElementsByClassName("option"); //OPTIMISE IT LATER
 for (i = 0; i < y.length; i++) {
-    y[i].innerHTML = quiz[tracker][i + 1];
+    y[i].innerHTML = quiz[randomtracker[tracker]][i + 1];
 }
+
+var c=0;//no of correct answers
+var w=0;//no of wrong answers
+
+var name=window.prompt("Your name is ");
+
 
 
 
 
 //function to check if correct or wrong
 function check(id) {
-    var t = quiz[tracker][5];
-    if (id.innerHTML == quiz[tracker][t + 1]) {
+    var t = quiz[randomtracker[tracker]][5];
+    if (id.innerHTML == quiz[randomtracker[tracker]][t + 1]) {
 
         //change format
         id.style.background = "rgb(0, 255, 0)";
-        score++;
+        score+=2;
+        c++;
         if (tracker < 9)
             alert("Correct answer! Do press NEXT to proceed.");
         else
@@ -41,6 +69,8 @@ function check(id) {
 
     } else {
         id.style.background = "#ff3333";
+        score-=0.5;
+        w++;
         if (tracker < 9)
             alert("Sorry! Wrong answer! Don't give up though. Do press NEXT to proceed.");
         else
@@ -50,26 +80,74 @@ function check(id) {
     }
 }
 
-//display SCORE
-function score1() {
-    alert("YOUR SCORE IS " + score);
+//calculate and display SCORE
+function calscore(){
+
+  var p;
+  console.log(c);
+  console.log(w);
+
+//correct to wrong ratio factor
+  if((c/w)>=5)
+  score+=3;
+  else if((c/w)>=1 && (c/w)<5)
+  score+=1;
+  else{
+    score-=1;
+    }
+
+
+//Time factor
+  if(secs>90)
+  {
+    score+=5;
+  }
+else if(secs>0 && secs<90)
+score+=2.5;
+else{
+  score=score-1;
 }
+
+
+
+  //local Storage
+
+  if (typeof(Storage) !== "undefined") {
+
+    if(score>=Number(localStorage.getItem("highscore")))
+    {
+      localStorage.setItem("highscore", score);
+      localStorage.setItem("highscore_name", name);}
+
+
+   else {
+    alert("Sorry, your browser does not support Web Storage...");
+  }
+
+
+}}
+
+function score1() {
+    calscore();
+    alert(name+ " YOUR SCORE IS " + score + ". Highscore : " + localStorage.getItem("highscore") +" BY "+ localStorage.getItem("highscore_name"));
+}
+
 
 //function to assign the next question data to next question elements
 function assignNext() {
 
+console.log(score);
   tracker++;
-
-
 
     if (tracker <9) // checking if it exceeds
     {
 
-              x[0].innerHTML = quiz[tracker][0];
+
+              x[0].innerHTML = quiz[randomtracker[tracker]][0];
               var i;
               for (i = 0; i < y.length; i++) {
               y[i].style.background = "orange";
-              y[i].innerHTML = quiz[tracker][i + 1];
+              y[i].innerHTML = quiz[randomtracker[tracker]][i + 1];
         }
 
     }
@@ -78,11 +156,11 @@ function assignNext() {
           var k = document.getElementsByClassName("disabled");
       k[0].classList.remove("disabled");
 
-      x[0].innerHTML = quiz[tracker][0];
+      x[0].innerHTML = quiz[randomtracker[tracker]][0];
       var i;
       for (i = 0; i < y.length; i++) {
           y[i].style.background = "orange";
-          y[i].innerHTML = quiz[tracker][i + 1];
+          y[i].innerHTML = quiz[randomtracker[tracker]][i + 1];
     }
 
 }
@@ -94,12 +172,72 @@ function assignPrev() {
     if (tracker <= 9) // checking if it exceeds
     {
         tracker--;
-        x[0].innerHTML = quiz[tracker][0];
+        x[0].innerHTML = quiz[randomtracker[tracker]][0];
         var i;
         for (i = 0; i < y.length; i++) {
-            y[i].innerHTML = quiz[tracker][i + 1];
+            y[i].innerHTML = quiz[randomtracker[tracker]][i + 1];
         }
 
     }
 
 }
+
+
+
+var mins = 2;
+
+
+        var secs = mins * 60;
+
+
+        function countdown() {
+            setTimeout('Decrement()', 60);
+        }
+
+
+        function Decrement() {
+            if (document.getElementById) {
+                minutes = document.getElementById("minutes");
+                seconds = document.getElementById("seconds");
+
+                if (seconds < 59) {
+                    seconds.value = secs;
+                }
+
+
+                else {
+                    minutes.value = getminutes();
+                    seconds.value = getseconds();
+                }
+
+                if (mins < 1) {
+                    minutes.style.color = "red";
+                    seconds.style.color = "red";
+                }
+
+                if (secs <= 0) {
+
+                    calscore();
+                    alert(name + ' Time up! Your score is ' + score + ". Highscore : " + localStorage.getItem("highscore") +" BY "+ localStorage.getItem("highscore_name"));
+
+                    minutes.value = 0;
+                    seconds.value = 0;
+                }
+
+                else {
+                    secs--;
+                    setTimeout('Decrement()', 1000);
+                }
+            }
+        }
+
+        function getminutes() {
+
+            mins = Math.floor(secs / 60);
+            return mins;
+        }
+
+        function getseconds() {
+
+            return secs - Math.round(mins * 60);
+        }

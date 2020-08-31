@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
@@ -12,16 +13,32 @@
 
 </head>
 
-<body>
+<body onload="countdown();">
 
+    <h1> <img src="virus2.png" alt="Virus Image not Loading">COVID MANIA</h1>
+    <div class="row timer">
+        Time Left
 
-    <h1> <img src="virus.png" alt="Virus Image not Loading">COVID MANIA</h1>
+    </div>
+    <div class="row timer">
+
+        <input id="minutes" type="text" style="width: 20px; background-color: green; padding:17px; border-radius: 9px; margin-top: -10px;
+             border: solid; font-size: 16px;
+            font-weight: bold; color: black;"><font size="5"> :
+                        </font>
+
+        <input id="seconds" type="text" style="width: 20px; background-color: green; padding:17px; border-radius: 9px; margin-top: -3px;
+                        border: solid; font-size: 16px;
+                        font-weight: bold; color: black;">
+    </div>
 
 
     <div class="question">Nothing</div>
     <hr>
 
-    <div class="row">
+<div class="row">
+
+
         <button type="button" onclick="check(this)" name="button" class="option" id="#o1">1</button>
         <button type="button" onclick="check(this)" name="button" class="option" id="#o2">2</button>
         <button type="button" onclick="check(this)" name="button" class="option" id="#o3">3</button>
@@ -33,7 +50,7 @@
     <hr>
 
     <div class="navigatediv">
-        <button type="button" onclick="assignPrev()" class="navigate" name="button"><i class="fas fa-arrow-left"></i> PREVIOUS</button>
+        <button type="button" onclick="assignPrev()" class="navigate prev" name="button"><i class="fas fa-arrow-left"></i> PREVIOUS</button>
         <button type="button" id="#next" onclick="assignNext()" class="navigate" name="button">NEXT <i class="fas fa-arrow-right"></i></button>
 
     </div>
