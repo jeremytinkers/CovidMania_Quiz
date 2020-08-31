@@ -58,32 +58,36 @@ function score1() {
 //function to assign the next question data to next question elements
 function assignNext() {
 
-    tracker++;
-
-    if (tracker >= 9) {
-        var k = document.getElementsByClassName("disabled");
-        k[0].classList.remove("disabled");
-      /*  var n = document.querySelector("#next");
-        n.classList.add("disabled");*/
+  tracker++;
 
 
-    }
 
-    if (tracker < 9) // checking if it exceeds
+    if (tracker <9) // checking if it exceeds
     {
 
-
-        x[0].innerHTML = quiz[tracker][0];
-        var i;
-        for (i = 0; i < y.length; i++) {
-            y[i].style.background = "orange";
-            y[i].innerHTML = quiz[tracker][i + 1];
+              x[0].innerHTML = quiz[tracker][0];
+              var i;
+              for (i = 0; i < y.length; i++) {
+              y[i].style.background = "orange";
+              y[i].innerHTML = quiz[tracker][i + 1];
         }
 
+    }
+    else
+    {
+          var k = document.getElementsByClassName("disabled");
+      k[0].classList.remove("disabled");
+
+      x[0].innerHTML = quiz[tracker][0];
+      var i;
+      for (i = 0; i < y.length; i++) {
+          y[i].style.background = "orange";
+          y[i].innerHTML = quiz[tracker][i + 1];
     }
 
 }
 
+}
 
 //function to assign the previous question data to previous question elements
 function assignPrev() {
