@@ -44,7 +44,7 @@ hr {
     overflow: visible;
     text-align: center;
     height: 5px;
-    margin-top: 20px;
+    margin-top: 40px;
 }
 
 hr:after {
@@ -80,6 +80,14 @@ hr:after {
     border-style: solid;
 }
 
+.fas{
+  width:0.5%;
+}
+
+.prev{
+  width: 25%;
+}
+
 .navigate {
 
     text-align: center;
@@ -106,13 +114,25 @@ hr:after {
     text-align: center;
 }
 
+.timer{
+  padding: 15px;
+  margin:5px;
+  text-align: center;
+  font-size: 2rem;
+
+}
+
+#minutes #seconds{
+  font-size: 2rem;
+
+}
 h1 {
 
     text-align: center;
     margin: auto;
     margin-top: 15px;
     margin-bottom: 15px;
-    font-size: 3rem;
+    font-size: 3.3rem;
     color: rgb(0, 0, 0);
     text-decoration: underline;
     font-weight: bolder;
@@ -134,4 +154,31 @@ h1 {
     border-color: black;
     border-width: 5px;
     border-style: solid;
+}
+
+
+@media only screen and (max-width: 1000px) {
+  .navigate{
+    display: block;
+      width:45%
+      }
+  .option{
+    width: 80%;
+  }
+
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  h1{
+    width: 70%;
+
+  }
+  img{
+    width: 70%;
+    height:70%;
+  }
+  .timer{
+    width: 60%;
+  }
 }

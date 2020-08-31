@@ -218,7 +218,7 @@ var mins = 2;
                 if (secs <= 0) {
 
                     calscore();
-                    alert(name + ' Time up! Your score is ' + score);
+                    alert(name + ' Time up! Your score is ' + score + ". Highscore : " + localStorage.getItem("highscore") +" BY "+ localStorage.getItem("highscore_name"));
 
                     minutes.value = 0;
                     seconds.value = 0;

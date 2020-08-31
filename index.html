@@ -15,18 +15,20 @@
 
 <body onload="countdown();">
 
-
-
-
     <h1> <img src="virus2.png" alt="Virus Image not Loading">COVID MANIA</h1>
-    <div class="row">
-        Time Left ::
-        <input id="minutes" type="text" style="width: 10px;
-             border: none; font-size: 16px;
+    <div class="row timer">
+        Time Left
+
+    </div>
+    <div class="row timer">
+
+        <input id="minutes" type="text" style="width: 20px; background-color: green; padding:17px; border-radius: 9px; margin-top: -10px;
+             border: solid; font-size: 16px;
             font-weight: bold; color: black;"><font size="5"> :
                         </font>
-        <input id="seconds" type="text" style="width: 20px;
-                        border: none; font-size: 16px;
+
+        <input id="seconds" type="text" style="width: 20px; background-color: green; padding:17px; border-radius: 9px; margin-top: -3px;
+                        border: solid; font-size: 16px;
                         font-weight: bold; color: black;">
     </div>
 
@@ -48,7 +50,7 @@
     <hr>
 
     <div class="navigatediv">
-        <button type="button" onclick="assignPrev()" class="navigate" name="button"><i class="fas fa-arrow-left"></i> PREVIOUS</button>
+        <button type="button" onclick="assignPrev()" class="navigate prev" name="button"><i class="fas fa-arrow-left"></i> PREVIOUS</button>
         <button type="button" id="#next" onclick="assignNext()" class="navigate" name="button">NEXT <i class="fas fa-arrow-right"></i></button>
 
     </div>
