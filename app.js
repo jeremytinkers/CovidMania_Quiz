@@ -43,8 +43,14 @@ for (i = 0; i < y.length; i++) {
     y[i].innerHTML = quiz[randomtracker[tracker]][i + 1];
 }
 
+var c=0;//no of correct answers
+var w=0;//no of wrong answers
 
 var name=window.prompt("Your name is ");
+
+
+
+
 
 //function to check if correct or wrong
 function check(id) {
@@ -53,7 +59,8 @@ function check(id) {
 
         //change format
         id.style.background = "rgb(0, 255, 0)";
-        score++;
+        score+=2;
+        c++;
         if (tracker < 9)
             alert("Correct answer! Do press NEXT to proceed.");
         else
@@ -62,6 +69,8 @@ function check(id) {
 
     } else {
         id.style.background = "#ff3333";
+        score-=0.5;
+        w++;
         if (tracker < 9)
             alert("Sorry! Wrong answer! Don't give up though. Do press NEXT to proceed.");
         else
@@ -71,21 +80,64 @@ function check(id) {
     }
 }
 
-//display SCORE
-function score1() {
-    alert(name+ " YOUR SCORE IS " + score);
+//calculate and display SCORE
+function calscore(){
+
+  var p;
+  console.log(c);
+  console.log(w);
+
+//correct to wrong ratio factor
+  if((c/w)>=5)
+  score+=3;
+  else if((c/w)>=1 && (c/w)<5)
+  score+=1;
+  else{
+    score-=1;
+    }
+
+
+//Time factor
+  if(secs>90)
+  {
+    score+=5;
+  }
+else if(secs>0 && secs<90)
+score+=2.5;
+else{
+  score=score-1;
 }
 
-//randomly orienting the questions
 
+
+  //local Storage
+
+  if (typeof(Storage) !== "undefined") {
+
+    if(score>=Number(localStorage.getItem("highscore")))
+    {
+      localStorage.setItem("highscore", score);
+      localStorage.setItem("highscore_name", name);}
+
+
+   else {
+    alert("Sorry, your browser does not support Web Storage...");
+  }
+
+
+}}
+
+function score1() {
+    calscore();
+    alert(name+ " YOUR SCORE IS " + score + ". Highscore : " + localStorage.getItem("highscore") +" BY "+ localStorage.getItem("highscore_name"));
+}
 
 
 //function to assign the next question data to next question elements
 function assignNext() {
 
+console.log(score);
   tracker++;
-
-
 
     if (tracker <9) // checking if it exceeds
     {
@@ -164,6 +216,8 @@ var mins = 2;
                 }
 
                 if (secs <= 0) {
+
+                    calscore();
                     alert(name + ' Time up! Your score is ' + score);
 
                     minutes.value = 0;
