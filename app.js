@@ -44,7 +44,7 @@ for (i = 0; i < y.length; i++) {
 }
 
 
-
+var name=window.prompt("Your name is ");
 
 //function to check if correct or wrong
 function check(id) {
@@ -73,7 +73,7 @@ function check(id) {
 
 //display SCORE
 function score1() {
-    alert("YOUR SCORE IS " + score);
+    alert(name+ " YOUR SCORE IS " + score);
 }
 
 //randomly orienting the questions
@@ -164,7 +164,7 @@ var mins = 2;
                 }
 
                 if (secs <= 0) {
-                    alert('Time up! Your score is ' + score);
+                    alert(name + ' Time up! Your score is ' + score);
 
                     minutes.value = 0;
                     seconds.value = 0;
