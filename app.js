@@ -38,3 +38,19 @@ var tracker=0;
     }
 
   }
+
+  //function to assign the previous question data to previous question elements
+    function assignPrev(){
+      if(tracker<=9) // checking if it exceeds
+      {
+        tracker--;
+        x[0].innerHTML=quiz[tracker][0];
+        var i;
+        for(i=0;i<y.length;i++)
+        {
+            y[i].innerHTML=quiz[tracker][i+1];
+        }
+
+      }
+
+    }
