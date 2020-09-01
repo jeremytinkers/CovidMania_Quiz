@@ -120,9 +120,7 @@ else{
       localStorage.setItem("highscore_name", name);}
 
 
-   else {
-    alert("Sorry, your browser does not support Web Storage...");
-  }
+
 
 
 }}
@@ -177,12 +175,67 @@ function assignPrev() {
         for (i = 0; i < y.length; i++) {
             y[i].innerHTML = quiz[randomtracker[tracker]][i + 1];
         }
-
-    }
+}
 
 }
 
 
+
+//function for quesition navigation
+
+
+function assignSpecific(id){
+
+  var b=-1;
+  var c;
+  c=document.getElementsByClassName("qno");
+
+  var i;
+  for(i=0;i<10;i++)
+  {
+        b++;
+        if(id.innerHTML==c[i].innerHTML)
+        break;
+  }
+console.log(b);
+  tracker=b;
+
+  if (tracker <9) // checking if it exceeds
+  {
+
+
+            x[0].innerHTML = quiz[randomtracker[tracker]][0];
+            var i;
+            for (i = 0; i < y.length; i++) {
+            y[i].style.background = "orange";
+            y[i].innerHTML = quiz[randomtracker[tracker]][i + 1];
+      }
+
+  }
+
+  else
+  {
+        var k = document.getElementsByClassName("disabled");
+    k[0].classList.remove("disabled");
+
+    x[0].innerHTML = quiz[randomtracker[tracker]][0];
+    var i;
+    for (i = 0; i < y.length; i++) {
+        y[i].style.background = "orange";
+        y[i].innerHTML = quiz[randomtracker[tracker]][i + 1];
+  }
+
+}
+
+
+            }
+
+
+
+
+
+
+//timer
 
 var mins = 2;
 
